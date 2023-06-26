@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example</title>
+</head>
+<body>
+    <h1 th:text="#{welcomemessage}"></h1>
+    <form th:object="${userInput}" th:action="@{/post}" method="post">
+        <ul th:if="${userInput != null and #fields.hasErrors('*')}">
+            <li class="error" th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+        </ul>
+        <label for="username" class="form-label">Username</label>
+        <input type="text" id="username" name="username" class="form-control" required>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <h1 th:text="${username}">Default</h1>
+
+</body>
+</html>
